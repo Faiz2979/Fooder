@@ -13,7 +13,7 @@ Follow the steps below to clone the repository, set up the environment, and run 
 
 1. Clone the Repository
 
-    `git clone https://github.com/whynaa/be_fooder.git`
+    `git clone https://github.com/Faiz2979/Fooder/tree/backend`
   
 2. Change directory
 
