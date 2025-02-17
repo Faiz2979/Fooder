@@ -18,14 +18,14 @@ if (request.nextUrl.pathname.startsWith('/manager')) {
     // Jika tidak ada token atau role, arahkan ke halaman login
     if (!token || !role) {
         const redirectAdmin = request.nextUrl.clone();
-        redirectAdmin.pathname = "/login";
+        redirectAdmin.pathname = "/404";
         return NextResponse.redirect(redirectAdmin);
     }
 
     // Jika role bukan MANAGER, arahkan ke halaman login
     if (role !== "MANAGER") {
         const redirectAdmin = request.nextUrl.clone();
-        redirectAdmin.pathname = "/login";
+        redirectAdmin.pathname = "/404";
         return NextResponse.redirect(redirectAdmin);
     }
 
@@ -36,7 +36,7 @@ if (request.nextUrl.pathname.startsWith('/cashier')) {
     // Jika tidak ada token atau role, arahkan ke halaman login
     if (!token || !role) {
         const redirectAdmin = request.nextUrl.clone();
-        redirectAdmin.pathname = "/login";
+        redirectAdmin.pathname = "/404";
         return NextResponse.redirect(redirectAdmin);
     }
     // Jika semua cek berhasil, lanjutkan ke halaman yang diminta
