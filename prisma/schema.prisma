@@ -38,10 +38,10 @@ enum Status {
 model User {
   id              Int      @id @default(autoincrement())
   uuid            String   @unique @default("")
-  name            String   @default("")
+  name            String
   email           String   @unique @default("")
-  password        String   @default("")
-  profile_picture String   @default("")
+  password        String   
+  profile_picture String   
   role            Role     @default(CASHIER)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
@@ -51,11 +51,11 @@ model User {
 model Menu {
   id          Int         @id @default(autoincrement())
   uuid        String      @unique @default("")
-  name        String      @default("")
+  name        String      
   price       Int         @default(0)
   category    Category    @default(FOOD)
-  picture     String      @default("")
-  description String      @default("") @db.Text
+  picture     String      
+  description String      @db.Text
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
   orderLists  OrderList[]
@@ -64,8 +64,8 @@ model Menu {
 model Order {
   id             Int         @id @default(autoincrement())
   uuid           String      @unique @default("")
-  customer       String      @default("")
-  table_number   String      @default("")
+  customer       String      
+  table_number   String      
   total_price    Int         @default(0)
   payment_method Payment     @default(CASH)
   status         Status      @default(NEW)
@@ -80,7 +80,7 @@ model OrderList {
   id        Int      @id @default(autoincrement())
   uuid      String   @unique @default("")
   quantity  Int      @default(0)
-  note      String   @default("") @db.Text
+  note      String   @db.Text
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   Menu      Menu?    @relation(fields: [menuId], references: [id])

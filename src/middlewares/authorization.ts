@@ -7,7 +7,7 @@ interface JwtPayload {
     name: string;
     email: string;
     role: string;
-  }
+}
 
 export const verifyToken = (req: Request, res: Response, next: NextFunction) => {
     const token = req.headers.authorization?.split(' ')[1];

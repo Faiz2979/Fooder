@@ -1,15 +1,16 @@
 import express from "express"
-import { getAllUsers, createUser, updateUser, deleteUser, changePicture, authentication, getUserById } from "../controllers/userController"
-import { verifyAddUser, verifyEditUser, verifyAuthentication } from "../middlewares/userValidation"
+import { authentication, changePicture, createUser, deleteUser, getAllUsers, getUserById, updateUser } from "../controllers/userController"
+import { verifyRole, verifyToken } from "../middlewares/authorization"
 import uploadFile from "../middlewares/profilUpload"
-import { verifyToken, verifyRole } from "../middlewares/authorization"
+import { verifyAuthentication, verifyEditUser } from "../middlewares/userValidation"
 
 const app = express()
 app.use(express.json())
 
 app.get(`/`, [verifyToken, verifyRole(["MANAGER"])], getAllUsers)
 app.get(`/profile`, [verifyToken, verifyRole(["CASHIER", "MANAGER"])], getUserById)
-app.post(`/`, [verifyToken, verifyRole(["MANAGER"]), uploadFile.single("picture"), verifyAddUser], createUser)
+// app.post(`/`, [verifyToken, verifyRole(["MANAGER"]), uploadFile.single("picture"), verifyAddUser], createUser)
+app.post(`/`, uploadFile.single("picture"), createUser)
 app.put(`/:id`, [verifyToken, verifyRole(["CASHIER", "MANAGER"]), uploadFile.single("picture"), verifyEditUser], updateUser)
 app.put(`/profile/:id`, [verifyToken, verifyRole(["CASHIER", "MANAGER"]), uploadFile.single("picture")], changePicture)
 app.delete(`/:id`, [verifyToken, verifyRole(["MANAGER"])], deleteUser)
