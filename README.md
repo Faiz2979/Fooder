@@ -13,8 +13,7 @@ Follow the steps below to clone the repository, set up the environment, and run 
 
 1. Clone the Repository
 
-    `git clone https://github.com/Faiz2979/Fooder/tree/backend`
-  
+    `git clone --branch backend --single-branch https://github.com/Faiz2979/Fooder`
 2. Change directory
 
    `cd ordering_system_backend`
